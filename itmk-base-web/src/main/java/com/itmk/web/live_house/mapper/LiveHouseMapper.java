@@ -1,0 +1,11 @@
+package com.itmk.web.live_house.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.itmk.web.live_house.entity.LiveHouse;
+
+/**
+ * @Classname LiveHouseMapper
+ * @Description
+ */
+public interface LiveHouseMapper extends BaseMapper<LiveHouse> {
+}
