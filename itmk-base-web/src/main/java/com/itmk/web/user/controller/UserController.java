@@ -145,38 +145,6 @@ public class UserController {
         }
     }
 
-
-    //    //用户登录
-//    @PostMapping("/login")
-//    public ResultVo login(@RequestBody LoginParm parm){
-//        if(StringUtils.isEmpty(parm.getUsername()) || StringUtils.isEmpty(parm.getPassword()) || StringUtils.isEmpty(parm.getUserType())){
-//            return ResultUtils.error("用户名、密码或用户类型不能为空");
-//        }
-//        //加密前端传来的密码
-//        String password = DigestUtils.md5DigestAsHex(parm.getPassword().getBytes());
-//        //构造查询条件
-//        QueryWrapper<User> query = new QueryWrapper<>();
-//        query.lambda().eq(User::getLoginName,parm.getUsername())
-//                .eq(User::getPassword,password);
-//
-//        /** 现在用户类型还没有使用到
-//         * todo
-//         */
-//        User user = userService.getOne(query);
-//        if(user == null){
-//            return  ResultUtils.error("用户名、密码或用户类型错误");
-//        }
-//        //生成token返回前端
-//        String token = jwtUtils.generateToken(user.getUsername());
-//        //获取token过期时间
-//        Long time = jwtUtils.getExpireTime(token);
-//        //封装返回数据
-//        LoginResult result = new LoginResult();
-//        result.setUserId(user.getUserId());
-//         result.setToken(token);
-//         result.setExpireTime(time);
-//        return ResultUtils.success("登录成功",result);
-//    }
     //用户登录
     @PostMapping("/login")
     public ResultVo login(@RequestBody LoginParm parm) {
