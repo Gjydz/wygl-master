@@ -77,7 +77,7 @@ public class UserController {
                 return ResultUtils.success("密码修改成功");
             }
             return ResultUtils.error("密码修改失败");
-        }else{//0:物主
+        }else{//1:物主
             User user1 = userService.getById(user.getUserId());
             //原来的密码
             String dataOldPassword = user1.getPassword();

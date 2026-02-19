@@ -21,7 +21,7 @@ mybatis-plus:
 
 #jwt配置
 jwt:
-  secret: com.itmk
+  secret: com.itmk.AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789!@#
   #30分钟过期
   expiration: 1800000
 
