@@ -3,12 +3,14 @@ package com.itmk.web.fee_water.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.itmk.web.fee_water.entity.FeeWater;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
  * @Classname FeeWaterMapper
  * @Description
  */
+@Mapper
 public interface FeeWaterMapper extends BaseMapper<FeeWater> {
 
     //分页查询

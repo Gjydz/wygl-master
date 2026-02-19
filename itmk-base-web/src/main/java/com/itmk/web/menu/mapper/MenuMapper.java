@@ -2,6 +2,7 @@ package com.itmk.web.menu.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.itmk.web.menu.entity.Menu;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  * @Classname MenuMapper
  * @Description 菜单 mapper层
  */
+@Mapper
 public interface MenuMapper extends BaseMapper<Menu> {
     //根据用户id查询权限
     List<Menu> getMenuByUserId(@Param("userId") Long userId);
