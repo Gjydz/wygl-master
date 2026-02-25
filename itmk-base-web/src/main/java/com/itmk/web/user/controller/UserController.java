@@ -229,9 +229,11 @@ public class UserController {
         //判断登录名唯一性
         if (StringUtils.isNotEmpty(user.getUsername())) {
             QueryWrapper<User> query = new QueryWrapper<>();
-            query.lambda().eq(User::getUsername, user.getUsername());
-            User one = userService.getOne(query);
-            if (one != null) {
+            query.lambda()
+                    .eq(User::getUsername, user.getUsername())
+                    .ne(User::getUserId, user.getUserId());
+            User existingUser = userService.getOne(query);
+            if (existingUser != null) {
                 return ResultUtils.error("用户名已经被占用!", 500);
             }
         }
