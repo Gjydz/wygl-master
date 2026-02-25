@@ -51,7 +51,7 @@ public class MenuController {
         //如果有下级，不能删除
         QueryWrapper<Menu> query = new QueryWrapper<>();
         query.lambda().eq(Menu::getParentId,menuId);
-        List<Menu> list = menuService.list();
+        List<Menu> list = menuService.list(query);
         if(list.size() > 0){
             return ResultUtils.error("该菜单存在下级，不能删除");
         }
