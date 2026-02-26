@@ -68,7 +68,7 @@ public class UserComplainController {
     }
     //新增
     @PostMapping
-    @PreAuthorize("hasAuthority('sys:myUserComplain:add')")
+    @PreAuthorize("hasAuthority('sys:myUserComplainList:add')")
     public ResultVo save(@RequestBody UserComplain userComplain){
         //设置投诉状态
         userComplain.setStatus("0");
@@ -84,7 +84,7 @@ public class UserComplainController {
 
     //编辑
     @PutMapping
-    @PreAuthorize("hasAuthority('sys:myUserComplain:edit')" + " || hasAuthority('sys:userComplainList:do')")
+    @PreAuthorize("hasAuthority('sys:myUserComplainList:edit')" + " || hasAuthority('sys:userComplainList:do')")
     public ResultVo edit(@RequestBody UserComplain userComplain){
         //设置投诉时间
         userComplain.setCreateTime(new Date());
@@ -97,7 +97,7 @@ public class UserComplainController {
     }
     //删除
     @DeleteMapping("/{complaintId}")
-    @PreAuthorize("hasAuthority('sys:myUserComplain:delete')")
+    @PreAuthorize("hasAuthority('sys:myUserComplainList:delete')")
     public ResultVo delete(@PathVariable("complaintId") Long complaintId){
         boolean b = userComplainService.removeById(complaintId);
         if(b){
