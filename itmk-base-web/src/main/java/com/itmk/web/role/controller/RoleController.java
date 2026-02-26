@@ -53,7 +53,7 @@ public class RoleController {
     @DeleteMapping("/{roleId}")
     @PreAuthorize("hasAuthority('sys:role:delete')")
     public ResultVo deleteRole(@PathVariable Long roleId){
-        boolean b = roleService.removeById(roleId);
+        boolean b = roleService.removeRoleById(roleId);
         if(b){
             return ResultUtils.success("删除角色成功");
         }

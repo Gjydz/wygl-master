@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -99,4 +100,20 @@ public class RoleServiceImpl extends ServiceImpl<RolerMapper, Role> implements R
         //保存新的权限
         roleMenuService.saveRoleMenu(parm.getRoleId(),parm.getList());
     }
+
+    @Override
+    public boolean removeRoleById(Serializable id) {
+        try {
+            Long roleId = (Long) id;
+            // 先删除该角色对应的所有权限记录
+            QueryWrapper<RoleMenu> query = new QueryWrapper<>();
+            query.lambda().eq(RoleMenu::getRoleId, roleId);
+            roleMenuService.remove(query);
+            // 再删除角色本身
+            return super.removeById(id);
+        } catch (Exception e) {
+            throw new RuntimeException("删除角色失败: " + e.getMessage());
+        }
+    }
+
 }
